@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAG | Project Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .report-container {
+    max-width: 900px; margin: 0 auto; background: var(--card);
+    border: 1px solid var(--border); border-radius: 12px; padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .report-head { font-family: var(--head); color: #fff; font-size: 2rem; margin-bottom: 0.5rem; }
+  .report-meta {
+    font-family: var(--mono); font-size: 0.8rem; color: var(--neon);
+    padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 2rem;
+  }
+  .report-section-title {
+    font-family: var(--head); font-size: 1.4rem; color: var(--neon2); margin-top: 2rem; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .report-section-title::before {
+    content: ""; display: block; width: 4px; height: 20px; background: var(--neon2); border-radius: 2px;
+  }
+  .report-text {
+    color: #8aabb8; font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem;
+  }
+  .tech-stack {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem;
+  }
+  .tech-badge {
+    padding: 6px 12px; background: rgba(0,255,136,0.1); border: 1px solid var(--border);
+    border-radius: 20px; font-family: var(--mono); font-size: 0.75rem; color: var(--neon);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">J</div>
+    <span>AG</span>
+  </a>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="toolsidex.html">TOOLS</a>
+    <a href="mapidex.html">THREAT MAP</a>
+    <a href="https://www.cisa.gov/cybersecurity-awareness-month" target="_blank">AWARENESS</a>
+    <a href="reportidex.html" class="active">REPORT</a>
+  </nav>
+  <div class="header-status">
+    <div class="pulse-dot"></div>
+    THREAT DETECTION ACTIVE
+  </div>
+</header>
+
+<div class="page active">
+  <div class="section">
+    <div class="report-container">
+      <h1 class="report-head">Cybersecurity Awareness & Threat Detection Platform</h1>
+      <div class="report-meta">AUTHOR: JAG Security Team | DATE: 2025 | STATUS: Deployed</div>
+
+      <h2 class="report-section-title">1. Executive Summary</h2>
+      <p class="report-text">
+        The JAG Security application is a comprehensive, client-side cybersecurity suite designed to provide real-time threat detection, advanced encryption, network reconnaissance, and educational resources. Its primary objective is to democratize access to essential cybersecurity tools while fostering user awareness regarding global cyber threat landscapes.
+      </p>
+
+      <h2 class="report-section-title">2. Architecture & Technology Stack</h2>
+      <p class="report-text">
+        The platform operates entirely in the browser using modern Web APIs, ensuring that sensitive data like passwords and cryptographic keys are never transmitted to a backend server. The user interface leverages a custom-built, neon-themed CSS framework for a premium 'cyberpunk' aesthetic.
+      </p>
+      <div class="tech-stack" style="margin-bottom: 1.5rem">
+        <span class="tech-badge">HTML5 / CSS3</span>
+        <span class="tech-badge">Vanilla JavaScript</span>
+        <span class="tech-badge">Web Crypto API</span>
+        <span class="tech-badge">Leaflet.js</span>
+        <span class="tech-badge">ipapi.co REST IP Info</span>
+      </div>
+
+      <h2 class="report-section-title">3. Core Objectives & Features</h2>
+      <p class="report-text">
+        The project is divided into actionable tooling and analytical intelligence:
+        <br><br>
+        <strong>1. Active Tools:</strong> Implements industry-standard cryptographic functions. The AES-256-GCM module ensures state-of-the-art symmetric encryption with authenticated data, relying on PBKDF2 for key derivation. The hashing utility provides collision-resistant SHA-256/512 checksums.<br><br>
+        <strong>2. Threat Intelligence:</strong> The Threat Map visualizes geopolitical cyber risk factors. By correlating temporal data with regional activity, the map generates heatmaps designating low, medium, or high threat vectors in real-time.
+      </p>
+
+      <h2 class="report-section-title">4. Future Roadmap</h2>
+      <p class="report-text">
+        Subsequent phases of the JAG Security platform will focus on backend integrations. This includes establishing secure WebSockets to a dedicated threat telemetry server to stream live attack logs globally rather than using algorithmic simulations. Integration with MITRE ATT&CK framework API is also planned.
+      </p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="text-align:center; color:var(--dim); font-size:0.8rem; font-family:var(--mono);">&copy; 2025 JAG Security. Real-time Cybersecurity Tools.</div>
+</footer>
+
+</body>
+</html>

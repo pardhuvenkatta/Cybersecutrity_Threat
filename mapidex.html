@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAG | Cybersecurity Threat Map</title>
+<!-- Leaflet CSS for Map -->
+<link rel="stylesheet" href="lib/leaflet.css" />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">J</div>
+    <span>AG</span>
+  </a>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="toolsidex.html">TOOLS</a>
+    <a href="mapidex.html" class="active">THREAT MAP</a>
+    <a href="https://www.cisa.gov/cybersecurity-awareness-month" target="_blank">AWARENESS</a>
+    <a href="reportidex.html">REPORT</a>
+  </nav>
+  <div class="header-status">
+    <div class="pulse-dot"></div>
+    THREAT DETECTION ACTIVE
+  </div>
+</header>
+
+<div class="page active">
+  <div class="section">
+    <div class="section-label">// DYNAMIC INTELLIGENCE</div>
+    <h2 class="section-title">Global Threat Intelligence Map</h2>
+    <p style="color:var(--dim); margin-bottom: 2rem;">Visualizing potential cybersecurity threats and reported incidents globally across different timelines.</p>
+    
+    <div class="db-upload" style="background:var(--dark2); border:1px solid var(--border); padding:1rem 1.5rem; border-radius:12px; margin-bottom:1.5rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+      <div style="flex:1">
+        <h3 style="font-family:var(--head); color:var(--neon2); font-size:1.1rem; margin-bottom:4px;">Upload Threat Database (CSV or SQLite)</h3>
+        <p style="font-size:0.8rem; color:var(--dim);">Provide your own dataset to visualize custom threat mappings. (CSV requires headers: year, month, day, hour, country_code, threat_level).</p>
+      </div>
+      <div>
+        <input type="file" id="dbUpload" accept=".sqlite,.db,.csv" style="display:none;" onchange="handleDbUpload(event)">
+        <button class="btn-scan" onclick="document.getElementById('dbUpload').click()" style="background:var(--card); border:1px solid var(--neon);">📂 BROWSE FILE</button>
+      </div>
+    </div>
+    
+    <div class="map-controls">
+      <div class="map-filter">
+        <label>YEAR</label>
+        <select id="mapYear">
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025" selected>2025</option>
+        </select>
+      </div>
+      <div class="map-filter">
+        <label>MONTH</label>
+        <select id="mapMonth">
+          <option value="01">January</option><option value="02">February</option>
+          <option value="03">March</option><option value="04">April</option>
+          <option value="05">May</option><option value="06">June</option>
+          <option value="07">July</option><option value="08">August</option>
+          <option value="09">September</option><option value="10">October</option>
+          <option value="11">November</option><option value="12">December</option>
+        </select>
+      </div>
+      <div class="map-filter">
+        <label>DAY</label>
+        <select id="mapDay">
+          <option value="01">01</option><option value="15" selected>15</option><option value="31">31</option>
+        </select>
+      </div>
+      <div class="map-filter">
+        <label>TIME</label>
+        <select id="mapHour">
+          <option value="00:00">00:00 - 05:59</option>
+          <option value="06:00">06:00 - 11:59</option>
+          <option value="12:00" selected>12:00 - 17:59</option>
+          <option value="18:00">18:00 - 23:59</option>
+        </select>
+      </div>
+      <button class="btn-scan" onclick="updateMapData()" style="background:var(--neon); color:var(--dark);">UPDATE MAP</button>
+    </div>
+
+    <!-- The Map Container -->
+    <div id="map"></div>
+    <p style="text-align:center; font-family:var(--mono); font-size:0.8rem; color:var(--dim); margin-top:1rem;">
+      Color mapping: <span style="color:#2c3e50">■ Null</span> | <span style="color:#00ff88">■ Low</span> | <span style="color:#ffaa40">■ Medium</span> | <span style="color:#ff6060">■ High Threat</span>
+    </p>
+  </div>
+</div>
+
+<footer>
+  <div style="text-align:center; color:var(--dim); font-size:0.8rem; font-family:var(--mono);">&copy; 2025 JAG Security. Real-time Cybersecurity Tools.</div>
+</footer>
+
+<!-- Map Integrity -->
+<script src="lib/leaflet.js"></script>
+<script src="lib/sql-wasm.js"></script>
+<script src="lib/papaparse.min.js"></script>
+<script src="js/map.js"></script>
+</body>
+</html>

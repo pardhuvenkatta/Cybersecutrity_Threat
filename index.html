@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAG | Cybersecurity World Threat Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* Hacker Theme Overrides */
+  body { background-color: #000; }
+  .hero { background: rgba(0,0,0,0.85); position:relative; overflow:hidden;}
+  .terminal-box {
+    background: rgba(5, 10, 15, 0.85); border: 1px solid var(--neon);
+    border-radius: 8px; padding: 2rem; max-width: 700px; margin: 0 auto 2rem;
+    box-shadow: 0 0 30px rgba(0,255,136,0.15), inset 0 0 20px rgba(0,255,136,0.05);
+    text-align: left;
+    backdrop-filter: blur(5px);
+  }
+  .term-header { display: flex; gap: 8px; margin-bottom: 1rem; border-bottom: 1px solid rgba(0,255,136,0.2); padding-bottom: 0.5rem;}
+  .term-dot { width: 12px; height: 12px; border-radius: 50%; opacity: 0.7; }
+  .term-red { background: #ff6060; } .term-ylw { background: #ffaa40; } .term-grn { background: #00ff88; }
+  
+  .hacker-h1 {
+    font-family: var(--mono); font-size: clamp(2.5rem,6vw,5rem);
+    font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0,255,136,0.4);
+    word-break: break-all;
+  }
+  .hacker-h1 span { color: var(--neon); }
+  
+  /* Awareness Grid Imported Styles */
+  .awareness-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .awareness-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s; }
+  .awareness-card:hover { border-color: var(--neon2); transform: translateY(-5px); box-shadow: 0 8px 24px rgba(0,207,255,0.15); }
+  .awareness-icon { font-size: 2.5rem; margin-bottom: 1rem; color: var(--neon2); }
+  .awareness-title { font-family: var(--head); font-size: 1.4rem; color: #fff; margin-bottom: 0.8rem; }
+  .awareness-text { color: #8aabb8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
+  .awareness-list { list-style: none; color: var(--text); font-family: var(--mono); font-size: 0.85rem; }
+  .awareness-list li { margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 8px; }
+  .awareness-list li::before { content: "▶"; color: var(--neon); font-size: 0.7rem; margin-top: 2px; }
+  
+  .typewriter {
+    font-family: var(--mono); font-size: 1.1rem; color: #c8e6f0;
+    white-space: pre-wrap; margin-bottom: 1.5rem; line-height: 1.6;
+    min-height: 80px;
+  }
+  .cursor { display: inline-block; width: 10px; height: 1.2em; background: var(--neon); animation: blink 1s step-end infinite; vertical-align: bottom; margin-left:4px;}
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  
+  /* Matrix Canvas */
+  #matrix-canvas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.35;
+  }
+  
+  .hero-content { z-index: 2; position: relative; width:100%; }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">J</div>
+    <span>AG</span>
+  </a>
+  <nav>
+    <a href="index.html" class="active">HOME</a>
+    <a href="toolsidex.html">TOOLS</a>
+    <a href="mapidex.html">THREAT MAP</a>
+    <a href="https://www.cisa.gov/cybersecurity-awareness-month" target="_blank">AWARENESS</a>
+    <a href="reportidex.html">REPORT</a>
+  </nav>
+  <div class="header-status">
+    <div class="pulse-dot"></div>
+    THREAT DETECTION ACTIVE
+  </div>
+</header>
+
+<div class="page active">
+  <div class="hero">
+    <canvas id="matrix-canvas"></canvas>
+    
+    <div class="hero-content">
+      <div class="terminal-box">
+        <div class="term-header">
+          <div class="term-dot term-red"></div><div class="term-dot term-ylw"></div><div class="term-dot term-grn"></div>
+        </div>
+        <div class="hero-badge"><div class="pulse-dot"></div> SECURE CONNECTION ESTABLISHED</div>
+        <h1 class="hacker-h1"><span>JAG</span> // <br>SECURITY_SUBROUTINE</h1>
+        <div class="typewriter" id="typewriter"></div>
+        <div class="btn-group" style="justify-content: flex-start; margin-top:2rem;">
+          <a class="btn btn-primary" href="toolsidex.html">▶ RUN DETECTOR</a>
+          <a class="btn btn-outline" href="mapidex.html">🌍 UPLINK THREAT MAP</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="awareness-section">
+    <div class="section-label">// EDUCATION & PREVENTION</div>
+    <h2 class="section-title">Cybersecurity Guidelines</h2>
+    <p style="color:var(--dim); font-size: 1.1rem; max-width: 800px; margin-bottom: 2rem;">Over 90% of cyber attacks start with human error. Educating yourself on common attack vectors is the critical first line of defense.</p>
+    
+    <div class="awareness-grid">
+      <div class="awareness-card">
+        <div class="awareness-icon">🎣</div>
+        <h3 class="awareness-title">Phishing & Social Eng.</h3>
+        <p class="awareness-text">Attacks use deceptive emails or messages to trick you into revealing sensitive data or installing malware.</p>
+        <ul class="awareness-list">
+          <li>Verify sender addresses carefully.</li>
+          <li>Do not click unverified links.</li>
+          <li>Beware of urgent requests.</li>
+        </ul>
+      </div>
+
+      <div class="awareness-card">
+        <div class="awareness-icon">🔐</div>
+        <h3 class="awareness-title">Credential Hygiene</h3>
+        <p class="awareness-text">Compromised credentials are the leading cause of data breaches. Defend your digital perimeter.</p>
+        <ul class="awareness-list">
+          <li>Use robust passwords (min. 12+ chars).</li>
+          <li>Never reuse passwords.</li>
+          <li>Require MFA where possible.</li>
+        </ul>
+      </div>
+
+      <div class="awareness-card">
+        <div class="awareness-icon">🦠</div>
+        <h3 class="awareness-title">Malware & Ransomware</h3>
+        <p class="awareness-text">Malicious software designed to disrupt, damage, or gain unauthorized access to computer systems.</p>
+        <ul class="awareness-list">
+          <li>Keep OS and applications updated.</li>
+          <li>Avoid pirated software platforms.</li>
+          <li>Maintain regular offline backups.</li>
+        </ul>
+      </div>
+
+      <div class="awareness-card">
+        <div class="awareness-icon">📡</div>
+        <h3 class="awareness-title">Secure Connections</h3>
+        <p class="awareness-text">Intercepting data across unsecured networks is a common tactic via Man-in-the-Middle attacks.</p>
+        <ul class="awareness-list">
+          <li>Avoid public Wi-Fi for banking.</li>
+          <li>Look for HTTPS on websites.</li>
+          <li>Use a reputable VPN.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="text-align:center; color:var(--dim); font-size:0.8rem; font-family:var(--mono);">&copy; 2025 JAG Security. Real-time Cybersecurity Tools.</div>
+</footer>
+
+<script>
+// ==================== TYPEWRITER EFFECT ====================
+const textLines = [
+  "root@jag-security:~# initiating defense protocols...",
+  "Loading global threat telemetry... [OK]",
+  "Establishing AES-256 encrypted payload... [OK]",
+  "> System ready. Awaiting command execute."
+];
+
+const twElement = document.getElementById('typewriter');
+let currentLine = 0;
+let currentChar = 0;
+
+function typeWriter() {
+  if (currentLine < textLines.length) {
+    if (currentChar === 0) twElement.innerHTML += '<br>';
+    if (currentChar < textLines[currentLine].length) {
+      twElement.innerHTML += textLines[currentLine].charAt(currentChar);
+      currentChar++;
+      setTimeout(typeWriter, Math.random() * 30 + 20); // typing speed var
+    } else {
+      currentLine++;
+      currentChar = 0;
+      setTimeout(typeWriter, 500); // pause between lines
+    }
+  } else {
+    twElement.innerHTML += '<span class="cursor"></span>';
+  }
+}
+setTimeout(typeWriter, 500);
+
+// ==================== MATRIX RAIN EFFECT ====================
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+|~{}:<>?-=[]\\;,./';
+let matrix = chars.split('');
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = [];
+for (let x = 0; x < columns; x++) drops[x] = 1;
+
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#0F0'; 
+  ctx.font = fontSize + 'px "Share Tech Mono"';
+  for (let i = 0; i < drops.length; i++) {
+    const text = matrix[Math.floor(Math.random() * matrix.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+function renderMatrix() {
+  drawMatrix();
+  requestAnimationFrame(renderMatrix);
+}
+requestAnimationFrame(renderMatrix);
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>

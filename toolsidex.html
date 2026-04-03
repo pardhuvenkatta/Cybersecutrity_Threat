@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAG | Cybersecurity Tools</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== TOOLS PAGE PREMIUM STYLES ===== */
+
+/* Animated cyber grid background */
+.tools-hero {
+  position: relative;
+  padding: 120px 2rem 60px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--dark) 0%, var(--dark2) 50%, var(--dark) 100%);
+}
+.tools-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridScroll 20s linear infinite;
+}
+@keyframes gridScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+.tools-hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0,207,255,0.08) 0%, transparent 70%);
+  animation: glowPulse 4s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+}
+.tools-hero-content {
+  position: relative;
+  z-index: 2;
+}
+.tools-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--neon2);
+  border: 1px solid rgba(0,207,255,0.25);
+  border-radius: 20px;
+  padding: 6px 18px;
+  margin-bottom: 1.2rem;
+  background: rgba(0,207,255,0.06);
+  letter-spacing: 2px;
+  animation: fadeSlideIn 0.6s ease-out;
+}
+.tools-hero h1 {
+  font-family: var(--head);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 3px;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  animation: fadeSlideIn 0.8s ease-out;
+}
+.tools-hero h1 .accent {
+  background: linear-gradient(135deg, var(--neon), var(--neon2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.tools-hero-desc {
+  font-family: var(--body);
+  font-size: 1.05rem;
+  color: var(--dim);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+  animation: fadeSlideIn 1s ease-out;
+}
+
+/* Stats counters */
+.tools-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  animation: fadeSlideIn 1.2s ease-out;
+}
+.tools-stat {
+  text-align: center;
+}
+.tools-stat-num {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--neon), var(--neon2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.tools-stat-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--dim);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhanced tool cards with glow and numbering */
+.tools-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.5rem;
+  padding: 0 2rem 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .tools-grid { grid-template-columns: 1fr !important; }
+}
+
+.tool-card {
+  background: linear-gradient(145deg, rgba(10,26,40,0.95), rgba(9,21,32,0.98));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: cardAppear 0.6s ease-out backwards;
+}
+.tool-card:nth-child(1) { animation-delay: 0.1s; }
+.tool-card:nth-child(2) { animation-delay: 0.2s; }
+.tool-card:nth-child(3) { animation-delay: 0.3s; }
+.tool-card:nth-child(4) { animation-delay: 0.4s; }
+.tool-card:nth-child(5) { animation-delay: 0.5s; }
+.tool-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--neon), var(--neon2), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.tool-card:hover::before { opacity: 1; }
+.tool-card:hover {
+  border-color: rgba(0,255,136,0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,255,136,0.08), 0 0 60px rgba(0,207,255,0.04);
+}
+
+/* Tool number badge */
+.tool-num {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: rgba(0,255,136,0.2);
+  letter-spacing: 1px;
+}
+
+/* Enhanced icon */
+.tool-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(0,255,136,0.1);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  transition: all 0.3s;
+}
+.tool-card:hover .tool-icon {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 0 20px rgba(0,255,136,0.15);
+}
+
+/* Section divider */
+.tools-divider {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 1rem 0;
+}
+.tools-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.tools-divider-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--neon);
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+/* Enhanced scan button */
+.btn-scan {
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+.btn-scan::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+.btn-scan:hover::after { transform: translateX(100%); }
+.btn-scan:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+/* Glowing result area */
+.cipher-result {
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  background: rgba(0,207,255,0.04);
+  border: 1px solid rgba(0,207,255,0.15);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--neon2);
+  word-break: break-all;
+  min-height: 60px;
+  margin-top: 0.8rem;
+  transition: all 0.4s;
+  backdrop-filter: blur(4px);
+}
+
+/* Floating particles */
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--neon);
+  opacity: 0;
+  animation: floatParticle linear infinite;
+}
+@keyframes floatParticle {
+  0% { opacity: 0; transform: translateY(100vh) scale(0); }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-20px) scale(1); }
+}
+.particle:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; background: var(--neon); }
+.particle:nth-child(2) { left: 25%; animation-duration: 12s; animation-delay: 2s; background: var(--neon2); }
+.particle:nth-child(3) { left: 40%; animation-duration: 10s; animation-delay: 4s; background: var(--neon3); }
+.particle:nth-child(4) { left: 55%; animation-duration: 9s; animation-delay: 1s; background: var(--neon); }
+.particle:nth-child(5) { left: 70%; animation-duration: 11s; animation-delay: 3s; background: var(--neon2); }
+.particle:nth-child(6) { left: 85%; animation-duration: 7s; animation-delay: 5s; background: var(--neon3); }
+.particle:nth-child(7) { left: 50%; animation-duration: 13s; animation-delay: 6s; background: var(--neon); }
+.particle:nth-child(8) { left: 15%; animation-duration: 9s; animation-delay: 7s; background: var(--neon2); }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">J</div>
+    <span>AG</span>
+  </a>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="toolsidex.html" class="active">TOOLS</a>
+    <a href="mapidex.html">THREAT MAP</a>
+    <a href="https://www.cisa.gov/cybersecurity-awareness-month" target="_blank">AWARENESS</a>
+    <a href="reportidex.html">REPORT</a>
+  </nav>
+  <div class="header-status">
+    <div class="pulse-dot"></div>
+    THREAT DETECTION ACTIVE
+  </div>
+</header>
+
+<!-- ===== HERO SECTION ===== -->
+<div class="tools-hero">
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+  <div class="tools-hero-content">
+    <div class="tools-hero-badge">
+      <div class="pulse-dot" style="width:6px;height:6px;"></div>
+      SECURITY SUITE v3.0
+    </div>
+    <h1>Cybersecurity <span class="accent">Toolkit</span></h1>
+    <p class="tools-hero-desc">Enterprise-grade security tools powered by real-time analysis. Scan websites, detect threats, encrypt data, and analyze vulnerabilities — all from your browser.</p>
+    <div class="tools-stats">
+      <div class="tools-stat">
+        <div class="tools-stat-num">6</div>
+        <div class="tools-stat-label">ACTIVE TOOLS</div>
+      </div>
+      <div class="tools-stat">
+        <div class="tools-stat-num">20+</div>
+        <div class="tools-stat-label">THREAT PATTERNS</div>
+      </div>
+      <div class="tools-stat">
+        <div class="tools-stat-num">256</div>
+        <div class="tools-stat-label">BIT ENCRYPTION</div>
+      </div>
+      <div class="tools-stat">
+        <div class="tools-stat-num">LIVE</div>
+        <div class="tools-stat-label">SCANNING</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOOLS GRID ===== -->
+<div class="tools-grid" style="margin-top:-30px; position:relative; z-index:3;">
+
+  <!-- SECTION: THREAT ANALYSIS -->
+  <div class="tools-divider">
+    <div class="tools-divider-line"></div>
+    <div class="tools-divider-label">// THREAT ANALYSIS</div>
+    <div class="tools-divider-line"></div>
+  </div>
+
+  <!-- THREAT DETECTOR -->
+  <div class="tool-card" style="grid-column: 1 / -1;">
+    <div class="tool-num">01</div>
+    <div class="tool-header">
+      <div class="tool-header-left"><div class="tool-icon" style="background:rgba(255,60,60,0.15); border-color:#ff6060">⚠️</div><div><h3>Threat Detector</h3><p>Malicious URL, script & phishing detection</p></div></div>
+      <button class="btn-info" onclick="showInfo('threat')">ℹ️</button>
+    </div>
+    <textarea class="tool-textarea" id="threatInput" rows="4" placeholder="Paste URL, code snippet, or suspicious text..."></textarea>
+    <div class="sample-threats-row">
+      <span class="sample-label">Try samples:</span>
+      <button class="sample-pill sample-xss" onclick="setSampleThreat('xss')">⚡ XSS</button>
+      <button class="sample-pill sample-sqli" onclick="setSampleThreat('sqli')">💉 SQLi</button>
+      <button class="sample-pill sample-phish" onclick="setSampleThreat('phishing')">🎣 Phishing URL</button>
+      <button class="sample-pill sample-malware" onclick="setSampleThreat('malware')">🦠 Malware Script</button>
+    </div>
+    <button class="btn-scan" onclick="detectThreat()" style="background:linear-gradient(135deg,#ff6060,#ff3c3c); width:100%; color:#fff;">🔍 SCAN FOR THREATS</button>
+    <div class="cipher-result" id="threatResult" style="border-color:rgba(255,96,96,0.2); color:#ffaa40">⏳ Paste or select a sample to scan</div>
+  </div>
+
+  <!-- LIVE WEBSITE VULNERABILITY SCANNER -->
+  <div class="tool-card" style="grid-column: 1 / -1;">
+    <div class="tool-num">02</div>
+    <div class="tool-header">
+      <div class="tool-header-left">
+        <div class="tool-icon" style="background:rgba(0,207,255,0.15); border-color:var(--neon2)">🌐</div>
+        <div>
+          <h3>Live Website Vulnerability Scanner</h3>
+          <p>Fetches real page source & scans for XSS, SQLi, phishing, insecure code</p>
+        </div>
+      </div>
+      <button class="btn-info" onclick="showInfo('webscan')">ℹ️</button>
+    </div>
+    <div style="display:flex; gap:10px; margin-bottom:10px;">
+      <input class="scan-input" id="webscanUrl" placeholder="Enter website URL (e.g. https://example.com)" style="flex:1">
+      <button class="btn-scan" id="webscanBtn" onclick="scanWebsite()" style="background:linear-gradient(135deg,var(--neon2),#0090cc); color:var(--dark); white-space:nowrap;">🔍 SCAN WEBSITE</button>
+    </div>
+    <div class="sample-threats-row" style="border-color:rgba(0,207,255,0.25); background:rgba(0,207,255,0.04);">
+      <span class="sample-label">Try demo sites:</span>
+      <button class="sample-pill sample-xss" onclick="document.getElementById('webscanUrl').value='http://testphp.vulnweb.com/'; scanWebsite();">⚡ VulnWeb (XSS)</button>
+      <button class="sample-pill sample-sqli" onclick="document.getElementById('webscanUrl').value='http://zero.webappsecurity.com/'; scanWebsite();">💉 Zero Bank (SQLi)</button>
+      <button class="sample-pill sample-phish" onclick="document.getElementById('webscanUrl').value='http://testhtml5.vulnweb.com/'; scanWebsite();">🎣 HTML5 Vuln</button>
+      <button class="sample-pill sample-malware" onclick="document.getElementById('webscanUrl').value='http://demo.testfire.net/'; scanWebsite();">🦠 AltoroMutual</button>
+      <button class="sample-pill" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.2);color:var(--dim);" onclick="document.getElementById('webscanUrl').value='https://www.example.com'; scanWebsite();">🟢 Clean Site</button>
+    </div>
+    <!-- Progress Bar -->
+    <div id="webscanProgress" style="display:none; margin-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+        <span id="webscanStage" style="font-family:var(--mono); font-size:0.75rem; color:var(--neon2);">Initializing...</span>
+        <span id="webscanPercent" style="font-family:var(--mono); font-size:0.75rem; color:var(--dim);">0%</span>
+      </div>
+      <div class="meter-bg">
+        <div class="meter-fill" id="webscanMeter" style="background:linear-gradient(90deg,var(--neon2),var(--neon));"></div>
+      </div>
+    </div>
+    <!-- Results -->
+    <div class="cipher-result" id="webscanResult" style="border-color:rgba(0,207,255,0.2); color:var(--neon2); min-height:80px;">
+      ⏳ Enter a URL above and click SCAN to analyze a live website for vulnerabilities
+    </div>
+  </div>
+
+  <!-- SECTION: SECURITY TOOLS -->
+  <div class="tools-divider">
+    <div class="tools-divider-line"></div>
+    <div class="tools-divider-label">// ENCRYPTION & ANALYSIS</div>
+    <div class="tools-divider-line"></div>
+  </div>
+
+  <!-- Live IP Lookup -->
+  <div class="tool-card">
+    <div class="tool-num">03</div>
+    <div class="tool-header"><div class="tool-header-left"><div class="tool-icon" style="background:rgba(0,255,136,0.12); border-color:var(--neon)">🌍</div><div><h3>Live IP Geolocation</h3><p>Real API - ipapi.co</p></div></div><button class="btn-info" onclick="showInfo('ip')">ℹ️</button></div>
+    <div style="display:flex; gap:10px; margin-bottom:10px;"><input class="scan-input" id="ipInput" placeholder="Enter IP (or blank for your IP)"><button class="btn-scan" onclick="lookupRealIP()" style="background:linear-gradient(135deg,var(--neon),#00cc70); color:var(--dark)">LOOKUP</button></div>
+    <div class="cipher-result" id="ipResultArea">Ready</div>
+  </div>
+
+  <!-- Real Hash Generator -->
+  <div class="tool-card">
+    <div class="tool-num">04</div>
+    <div class="tool-header"><div class="tool-header-left"><div class="tool-icon" style="background:rgba(255,170,64,0.12); border-color:#ffaa40">🔑</div><div><h3>Real Hash Generator</h3><p>SHA-1/256/384/512</p></div></div><button class="btn-info" onclick="showInfo('hash')">ℹ️</button></div>
+    <input class="pw-input" id="hashInput" placeholder="Enter text to hash..." oninput="generateRealHash()">
+    <div class="hash-type-row"><button class="hash-pill active" onclick="setRealHashType('SHA-1',this)">SHA-1</button><button class="hash-pill" onclick="setRealHashType('SHA-256',this)">SHA-256</button><button class="hash-pill" onclick="setRealHashType('SHA-384',this)">SHA-384</button><button class="hash-pill" onclick="setRealHashType('SHA-512',this)">SHA-512</button></div>
+    <div class="cipher-result" id="realHashResult" style="color:#00ff88">Hash will appear here</div>
+  </div>
+
+  <!-- Real-Time Password Strength Analyzer -->
+  <div class="tool-card">
+    <div class="tool-num">05</div>
+    <div class="tool-header">
+      <div class="tool-header-left">
+        <div class="tool-icon" style="background:rgba(0,207,255,0.15); border-color:var(--neon2)">🛡️</div>
+        <div><h3>Password Analyzer</h3><p>Real-time entropy & strength scoring</p></div>
+      </div>
+    </div>
+    <div style="position:relative; margin-bottom:15px;">
+      <input class="pw-input" id="pwAnalyzerInput" type="password" placeholder="Enter password to analyze..." oninput="checkPasswordStrength()" style="padding-right: 40px; border: 1px solid var(--border); background: var(--dark2); color: #fff; width: 100%; box-sizing: border-box; border-radius: 6px;">
+      <button id="pwToggleBtn" onclick="togglePasswordVisibility()" style="position:absolute; right:10px; top:10px; background:transparent; border:none; color:var(--dim); cursor:pointer; font-size:1.2rem;">👁️</button>
+    </div>
+    <div class="meter-bg">
+      <div class="meter-fill" id="pwMeterFill"></div>
+    </div>
+    <div style="display:flex; justify-content:space-between; margin-top:8px; font-family:var(--mono); font-size:0.9rem;">
+      <span id="pwScoreText" style="color:var(--dim)">Score: 0%</span>
+      <span id="pwFeedbackText" style="color:#ff6060">Waiting for input...</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="text-align:center; color:var(--dim); font-size:0.8rem; font-family:var(--mono);">&copy; 2025 JAG Security. Real-time Cybersecurity Tools.</div>
+</footer>
+
+<script src="js/tools.js"></script>
+</body>
+</html>
